@@ -1,3 +1,8 @@
-require('../scss/styles.scss');
+import Keyboard from './Keyboard';
+import '../scss/styles.scss';
 
-console.log('Yell');
+const keyboard = new Keyboard();
+
+keyboard.init();
+// keyboard.render();
+// console.log(keyboard.toString());
