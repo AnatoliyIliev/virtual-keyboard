@@ -1,4 +1,4 @@
-export default keyLayout = [
+export default [
   'backtick',
   '1',
   '2',
