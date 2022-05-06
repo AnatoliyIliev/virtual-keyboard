@@ -57,7 +57,7 @@ export default [
   'leftctrl',
   'win',
   'leftalt',
-  'spacebar',
+  'space',
   'rightalt',
   'leftarrow',
   'downarrow',

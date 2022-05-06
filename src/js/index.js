@@ -1,8 +1,9 @@
 import Keyboard from './Keyboard';
-import '../scss/styles.scss';
+// import '../scss/styles.scss';
 
 const keyboard = new Keyboard();
-keyboard.init();
+// keyboard.init();
 
 // keyboard.render();
+console.log(keyboard);
 // console.log(keyboard.toString());
