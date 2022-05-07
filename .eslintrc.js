@@ -8,7 +8,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
   },
-  ignorePatterns: ['webpack.config.js', 'public/script.js'],
+  ignorePatterns: ['webpack.config.js', 'build/script.js'],
   rules: {
     semi: ['error', 'always'],
     quotes: ['error', 'semi'],

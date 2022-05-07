@@ -29,7 +29,7 @@ export default class Keyboard {
     });
   }
 
-  _createKeys() {
+  createKeys() {
     const fragment = document.createDocumentFragment();
     const keyLayout = [
       'backtick',
