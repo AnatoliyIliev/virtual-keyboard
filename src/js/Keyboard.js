@@ -4,14 +4,16 @@ const refs = getRefs();
 
 export default class Keyboard {
   constructor() {
-    this.main = null;
-    this.keysContainer = null;
-    this.keys = [];
-    this.value = '';
     this.capsLock = false;
   }
 
   init() {
+    let arr = [];
+    refs.body.addEventListener('keydown', e => {
+      console.log(e.code);
+      arr.push(e.code);
+      console.log(e.code);
+    });
     this.main = document.createElement('div');
     this.main.classList.add('container');
     this.main.innerHTML = `<h1 class="title">Virtual keyboard</h1><textarea class="textarea" id="textarea" rows="5" cols="50"></textarea>`;
@@ -28,15 +30,6 @@ export default class Keyboard {
     keysEN.forEach(key => {
       const keyElement = document.createElement('div');
 
-      // const firstSumbol =
-      //   ['`', 'Tab', 'Caps Lock', 'leftshift', 'leftctrl'].indexOf(key) !== -1;
-
-      // const lastSumbol =
-      //   ['Backspace', 'Del', 'Enter', 'rightshift'].indexOf(key) !== -1;
-
-      // if (lastSumbol) {
-      //   fragment.appendChild(document.createElement('br'));
-      // }
       switch (key) {
         case 'Backspace':
           keyElement.classList.add('key', 'backspace_key');
@@ -98,9 +91,19 @@ export default class Keyboard {
           keyElement.classList.add('key', 'downarrow');
           keyElement.innerHTML = '▲';
           break;
-        default:
+        case 'win':
           keyElement.classList.add('key');
-          keyElement.textContent = key;
+          keyElement.innerHTML = 'Win';
+          break;
+        case 'Del':
+          keyElement.classList.add('key');
+          keyElement.innerHTML = 'Del';
+          break;
+        default:
+          keyElement.textContent = this.capsLock
+            ? key.toUpperCase()
+            : key.toLowerCase();
+          keyElement.classList.add('key');
           break;
       }
 
