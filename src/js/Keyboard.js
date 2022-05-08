@@ -18,27 +18,48 @@ export default class Keyboard {
     this.keysContainer.appendChild(this._createKeys(this.languach));
     this.main.appendChild(this.keysContainer);
     refs.body.appendChild(this.main);
+
+    this.toggleActiveButton();
   }
 
   _createKeys(languach) {
     const fragment = document.createDocumentFragment();
 
-    keys.forEach(({ keyCode, en, ru, universalButton }) => {
+    keys.forEach(({ keyCode, en, ua, universalButton }) => {
       const keyElement = document.createElement('div');
 
-      const countLanguach = languach === 'en' ? en.normal : ru.normal;
+      const countLanguach = languach === 'en' ? en.normal : ua.normal;
 
       if (universalButton) {
-        keyElement.classList.add('key', keyCode);
+        keyElement.classList.add('keys', keyCode);
         keyElement.innerHTML = countLanguach;
+        keyElement.setAttribute('name', keyCode);
       } else {
-        keyElement.classList.add('key');
+        keyElement.classList.add('keys');
         keyElement.innerHTML = countLanguach;
+        keyElement.setAttribute('name', keyCode);
       }
 
       fragment.appendChild(keyElement);
     });
 
     return fragment;
+  }
+
+  toggleActiveButton() {
+    const keysDOM = document.querySelectorAll('[name]');
+
+    window.addEventListener('keydown', e => toggleButton(e, 'add'));
+    window.addEventListener('keyup', e => toggleButton(e, 'remove'));
+
+    function toggleButton(e, toggle) {
+      keysDOM.forEach(key => {
+        const attribute = key.getAttribute('name');
+
+        if (attribute === e.code) {
+          key.classList[toggle]('active');
+        }
+      });
+    }
   }
 }
