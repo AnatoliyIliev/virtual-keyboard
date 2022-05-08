@@ -49,11 +49,11 @@ margin: 15px 0;
     cursor: pointer;
 }
 
-.backspace_key {
+.Backspace {
     width: 128px;
 }
 
-.tab_key {
+.Tab {
     width: 70px;
 }
 
@@ -61,40 +61,29 @@ margin: 15px 0;
     width: 90px;
 }
 
-.caps_lock_key {
+.CapsLock {
     width: 90px;
 }
 
-.enter_key {
+.Enter {
     width: 146px;
 }
 
-.shift_key {
+.ShiftRight,
+.ShiftLeft {
     width: 118px;
 }
 
-.left_ctrl {
+.ControlLeft {
     width: 80px;
 }
 
-.right_ctrl {
+.ControlRight {
     width: 60px;
 }
 
-.space_key {
+.Space {
     width: 378px;
-}
-
-.downarrow{
-    transform:  rotate(180deg);
-}
-
-.leftarrow{
-    transform:  rotate(270deg);
-}
-
-.rightarrow{
-    transform:  rotate(90deg);
 }
 
 .textarea {
