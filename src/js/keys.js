@@ -93,85 +93,85 @@ export default [
   },
   {
     keyCode: 'KeyQ',
-    en: { normal: 'q', shift: 'Q' },
-    ua: { normal: 'й', shift: 'Й' },
+    en: { normal: 'q', shift: 'Q', capsLock: 'Q' },
+    ua: { normal: 'й', shift: 'Й', capsLock: 'Й' },
     universalButton: false,
   },
 
   {
     keyCode: 'KeyW',
-    en: { normal: 'w', shift: 'W' },
-    ua: { normal: 'ц', shift: 'Ц' },
+    en: { normal: 'w', shift: 'W', capsLock: 'W' },
+    ua: { normal: 'ц', shift: 'Ц', capsLock: 'Ц' },
     universalButton: false,
   },
 
   {
     keyCode: 'KeyE',
-    en: { normal: 'e', shift: 'E' },
-    ua: { normal: 'у', shift: 'У' },
+    en: { normal: 'e', shift: 'E', capsLock: 'E' },
+    ua: { normal: 'у', shift: 'У', capsLock: 'У' },
     universalButton: false,
   },
 
   {
     keyCode: 'KeyR',
-    en: { normal: 'r', shift: 'R' },
-    ua: { normal: 'к', shift: 'К' },
+    en: { normal: 'r', shift: 'R', capsLock: 'R' },
+    ua: { normal: 'к', shift: 'К', capsLock: 'К' },
     universalButton: false,
   },
 
   {
     keyCode: 'KeyT',
-    en: { normal: 't', shift: 'T' },
-    ua: { normal: 'е', shift: 'Е' },
+    en: { normal: 't', shift: 'T', capsLock: 'T' },
+    ua: { normal: 'е', shift: 'Е', capsLock: 'Е' },
     universalButton: false,
   },
 
   {
     keyCode: 'KeyY',
-    en: { normal: 'y', shift: 'Y' },
-    ua: { normal: 'н', shift: 'Н' },
+    en: { normal: 'y', shift: 'Y', capsLock: 'Y' },
+    ua: { normal: 'н', shift: 'Н', capsLock: 'Н' },
     universalButton: false,
   },
 
   {
     keyCode: 'KeyU',
-    en: { normal: 'u', shift: 'U' },
-    ua: { normal: 'г', shift: 'Г' },
+    en: { normal: 'u', shift: 'U', capsLock: 'U' },
+    ua: { normal: 'г', shift: 'Г', capsLock: 'Г' },
     universalButton: false,
   },
 
   {
     keyCode: 'KeyI',
-    en: { normal: 'i', shift: 'I' },
-    ua: { normal: 'ш', shift: 'Ш' },
+    en: { normal: 'i', shift: 'I', capsLock: 'I' },
+    ua: { normal: 'ш', shift: 'Ш', capsLock: 'Ш' },
     universalButton: false,
   },
 
   {
     keyCode: 'KeyO',
-    en: { normal: 'o', shift: 'O' },
-    ua: { normal: 'щ', shift: 'Щ' },
+    en: { normal: 'o', shift: 'O', capsLock: 'O' },
+    ua: { normal: 'щ', shift: 'Щ', capsLock: 'Щ' },
     universalButton: false,
   },
 
   {
     keyCode: 'KeyP',
-    en: { normal: 'p', shift: 'P' },
-    ua: { normal: 'з', shift: 'З' },
+    en: { normal: 'p', shift: 'P', capsLock: 'P' },
+    ua: { normal: 'з', shift: 'З', capsLock: 'З' },
     universalButton: false,
   },
 
   {
     keyCode: 'BracketLeft',
     en: { normal: '[', shift: '}' },
-    ua: { normal: 'х', shift: 'Х' },
+    ua: { normal: 'х', shift: 'Х', capsLock: 'Х' },
     universalButton: false,
   },
 
   {
     keyCode: 'BracketRight',
     en: { normal: ']', shift: '}' },
-    ua: { normal: 'ї', shift: 'Ї' },
+    ua: { normal: 'ї', shift: 'Ї', capsLock: 'Ї' },
     universalButton: false,
   },
 
@@ -196,78 +196,78 @@ export default [
   },
   {
     keyCode: 'KeyA',
-    en: { normal: 'a', shift: 'A' },
-    ua: { normal: 'ф', shift: 'Ф' },
+    en: { normal: 'a', shift: 'A', capsLock: 'A' },
+    ua: { normal: 'ф', shift: 'Ф', capsLock: 'Ф' },
     universalButton: false,
   },
 
   {
     keyCode: 'KeyS',
-    en: { normal: 's', shift: 'S' },
-    ua: { normal: 'і', shift: 'І' },
+    en: { normal: 's', shift: 'S', capsLock: 'S' },
+    ua: { normal: 'і', shift: 'І', capsLock: 'І' },
     universalButton: false,
   },
 
   {
     keyCode: 'KeyD',
-    en: { normal: 'd', shift: 'D' },
-    ua: { normal: 'в', shift: 'В' },
+    en: { normal: 'd', shift: 'D', capsLock: 'D' },
+    ua: { normal: 'в', shift: 'В', capsLock: 'В' },
     universalButton: false,
   },
 
   {
     keyCode: 'KeyF',
-    en: { normal: 'f', shift: 'F' },
-    ua: { normal: 'а', shift: 'А' },
+    en: { normal: 'f', shift: 'F', capsLock: 'F' },
+    ua: { normal: 'а', shift: 'А', capsLock: 'А' },
     universalButton: false,
   },
 
   {
     keyCode: 'KeyG',
-    en: { normal: 'g', shift: 'G' },
-    ua: { normal: 'п', shift: 'П' },
+    en: { normal: 'g', shift: 'G', capsLock: 'G' },
+    ua: { normal: 'п', shift: 'П', capsLock: 'П' },
     universalButton: false,
   },
 
   {
     keyCode: 'KeyH',
-    en: { normal: 'h', shift: 'H' },
-    ua: { normal: 'р', shift: 'Р' },
+    en: { normal: 'h', shift: 'H', capsLock: 'H' },
+    ua: { normal: 'р', shift: 'Р', capsLock: 'Р' },
     universalButton: false,
   },
 
   {
     keyCode: 'KeyJ',
-    en: { normal: 'j', shift: 'J' },
-    ua: { normal: 'о', shift: 'О' },
+    en: { normal: 'j', shift: 'J', capsLock: 'J' },
+    ua: { normal: 'о', shift: 'О', capsLock: 'О' },
     universalButton: false,
   },
 
   {
     keyCode: 'KeyK',
-    en: { normal: 'k', shift: 'K' },
-    ua: { normal: 'л', shift: 'Л' },
+    en: { normal: 'k', shift: 'K', capsLock: 'K' },
+    ua: { normal: 'л', shift: 'Л', capsLock: 'Л' },
     universalButton: false,
   },
 
   {
     keyCode: 'KeyL',
-    en: { normal: 'l', shift: 'L' },
-    ua: { normal: 'д', shift: 'Д' },
+    en: { normal: 'l', shift: 'L', capsLock: 'L' },
+    ua: { normal: 'д', shift: 'Д', capsLock: 'Д' },
     universalButton: false,
   },
 
   {
     keyCode: 'Semicolon',
     en: { normal: ';', shift: ':' },
-    ua: { normal: 'ж', shift: 'Ж' },
+    ua: { normal: 'ж', shift: 'Ж', capsLock: 'Ж' },
     universalButton: false,
   },
 
   {
     keyCode: 'Quote',
     en: { normal: "'", shift: '"' },
-    ua: { normal: 'є', shift: 'Є' },
+    ua: { normal: 'є', shift: 'Є', capsLock: 'Є' },
     universalButton: false,
   },
 
@@ -285,64 +285,64 @@ export default [
   },
   {
     keyCode: 'KeyZ',
-    en: { normal: 'z', shift: 'Z' },
-    ua: { normal: 'я', shift: 'Я' },
+    en: { normal: 'z', shift: 'Z', capsLock: 'Z' },
+    ua: { normal: 'я', shift: 'Я', capsLock: 'Я' },
     universalButton: false,
   },
 
   {
     keyCode: 'KeyX',
-    en: { normal: 'x', shift: 'X' },
-    ua: { normal: 'ч', shift: 'Ч' },
+    en: { normal: 'x', shift: 'X', capsLock: 'X' },
+    ua: { normal: 'ч', shift: 'Ч', capsLock: 'Ч' },
     universalButton: false,
   },
 
   {
     keyCode: 'KeyC',
-    en: { normal: 'c', shift: 'C' },
-    ua: { normal: 'с', shift: 'С' },
+    en: { normal: 'c', shift: 'C', capsLock: 'C' },
+    ua: { normal: 'с', shift: 'С', capsLock: 'С' },
     universalButton: false,
   },
 
   {
     keyCode: 'KeyV',
-    en: { normal: 'v', shift: 'V' },
-    ua: { normal: 'м', shift: 'М' },
+    en: { normal: 'v', shift: 'V', capsLock: 'V' },
+    ua: { normal: 'м', shift: 'М', capsLock: 'М' },
     universalButton: false,
   },
 
   {
     keyCode: 'KeyB',
-    en: { normal: 'b', shift: 'B' },
-    ua: { normal: 'и', shift: 'И' },
+    en: { normal: 'b', shift: 'B', capsLock: 'B' },
+    ua: { normal: 'и', shift: 'И', capsLock: 'И' },
     universalButton: false,
   },
 
   {
     keyCode: 'KeyN',
-    en: { normal: 'n', shift: 'N' },
-    ua: { normal: 'т', shift: 'Т' },
+    en: { normal: 'n', shift: 'N', capsLock: 'N' },
+    ua: { normal: 'т', shift: 'Т', capsLock: 'Т' },
     universalButton: false,
   },
 
   {
     keyCode: 'KeyM',
-    en: { normal: 'm', shift: 'M' },
-    ua: { normal: 'ь', shift: 'Ь' },
+    en: { normal: 'm', shift: 'M', capsLock: 'M' },
+    ua: { normal: 'ь', shift: 'Ь', capsLock: 'Ь' },
     universalButton: false,
   },
 
   {
     keyCode: 'Comma',
     en: { normal: ',', shift: '<' },
-    ua: { normal: 'б', shift: 'Б' },
+    ua: { normal: 'б', shift: 'Б', capsLock: 'Б' },
     universalButton: false,
   },
 
   {
     keyCode: 'Period',
     en: { normal: '.', shift: '>' },
-    ua: { normal: 'ю', shift: 'Ю' },
+    ua: { normal: 'ю', shift: 'Ю', capsLock: 'Ю' },
     universalButton: false,
   },
 
