@@ -3,7 +3,7 @@ import keys from './keys.js';
 export default class Keyboard {
   constructor() {
     this.capsLock = false;
-    this.languach = 'ua';
+    this.languach = 'en';
   }
 
   refs = {
@@ -21,7 +21,6 @@ export default class Keyboard {
 
     this.main.appendChild(this.keysContainer);
     this.refs.body.appendChild(this.main);
-    this._upperLowerLetter();
   }
 
   _createKeys(languach) {
@@ -73,14 +72,32 @@ export default class Keyboard {
 
         keys.forEach(k => {
           const onCapsLock = k[this.languach].capsLock;
-          if (this.capsLock) {
-            if (onCapsLock && k.keyCode === attribute) {
-              key.innerHTML = onCapsLock;
-            }
-          } else if (!this.capsLock) {
-            if (onCapsLock && k.keyCode === attribute) {
-              key.innerHTML = k[this.languach].normal;
-            }
+          const onShift = k[this.languach].shift;
+
+          switch (e.key) {
+            case 'CapsLock':
+              if (this.capsLock) {
+                if (onCapsLock && k.keyCode === attribute) {
+                  key.innerHTML = onCapsLock;
+                }
+              } else if (!this.capsLock) {
+                if (onCapsLock && k.keyCode === attribute) {
+                  key.innerHTML = k[this.languach].normal;
+                }
+              }
+              break;
+
+            case 'Shift':
+              if (toggle == 'add' && onShift && k.keyCode === attribute) {
+                key.innerHTML = onShift;
+              } else if (
+                toggle == 'remove' &&
+                onShift &&
+                k.keyCode === attribute
+              ) {
+                key.innerHTML = k[this.languach].normal;
+              }
+              break;
           }
         });
       });
