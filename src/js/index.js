@@ -3,4 +3,4 @@ import '../scss/style.scss';
 
 const keyboard = new Keyboard();
 keyboard.init();
-keyboard.toggleActiveButton();
+keyboard.changeButton();

@@ -90,13 +90,17 @@ margin: 15px 0;
 .textarea {
     width: 890px;
     height: 200px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     // border: none;
     outline: none;
     font-size: 26px;
     background-color: #f7f7f7;
     padding-left: 10px;
     transition: .2s;
+}
+
+.text {
+    margin-bottom: 10px;
 }
 
 .keys.active {

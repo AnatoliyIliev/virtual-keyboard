@@ -2,7 +2,7 @@ export default [
   {
     keyCode: 'Backquote',
     en: { normal: '`', shift: '~' },
-    ua: { normal: "'", shift: '₴' },
+    ua: { normal: '\'', shift: '₴' },
     universalButton: false,
   },
   {
@@ -163,7 +163,7 @@ export default [
 
   {
     keyCode: 'BracketLeft',
-    en: { normal: '[', shift: '}' },
+    en: { normal: '[', shift: '{' },
     ua: { normal: 'х', shift: 'Х', capsLock: 'Х' },
     universalButton: false,
   },
@@ -266,7 +266,7 @@ export default [
 
   {
     keyCode: 'Quote',
-    en: { normal: "'", shift: '"' },
+    en: { normal: '\'', shift: '"' },
     ua: { normal: 'є', shift: 'Є', capsLock: 'Є' },
     universalButton: false,
   },
