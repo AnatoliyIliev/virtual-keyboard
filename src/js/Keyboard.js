@@ -102,11 +102,24 @@ export default class Keyboard {
               break;
 
             case 'Shift':
-              if (toggle === 'add' && onShift && k.keyCode === attribute) {
-                keyD.innerHTML = onShift;
-              } else if (toggle === 'remove' && onShift && k.keyCode === attribute) {
-                keyD.innerHTML = k[this.languach].normal;
+              if (onShift && k.keyCode === attribute) {
+                if (toggle === 'add') {
+                  if (this.capsLock) {
+                    if (k.number) {
+                      keyD.innerHTML = k[this.languach].shift;
+                    } else { keyD.innerHTML = k[this.languach].normal; }
+                  } else { keyD.innerHTML = onShift; }
+                } else if (toggle === 'remove') {
+                  if (this.capsLock) {
+                    if (k.number) {
+                      keyD.innerHTML = k[this.languach].normal;
+                    } else { keyD.innerHTML = k[this.languach].shift; }
+                  } else if (!this.capsLock) {
+                    keyD.innerHTML = k[this.languach].normal;
+                  } else { keyD.innerHTML = onShift; }
+                }
               }
+
               break;
 
             default:
@@ -119,6 +132,7 @@ export default class Keyboard {
 
   changeLanguach() {
     const keysDOM = document.querySelectorAll('[name]');
+    const capsLock = this.capsLock ? 'shift' : 'normal';
 
     this.languach = this.languach === 'ua' ? 'en' : 'ua';
 
@@ -126,74 +140,13 @@ export default class Keyboard {
 
     keysDOM.forEach((keyD) => {
       const attribute = keyD.getAttribute('name');
+
       keys.forEach((k) => {
-        if (k.keyCode === attribute) { keyD.innerHTML = k[this.languach].normal; }
+        const onCapsLock = k[this.languach].capsLock;
+        if (k.keyCode === attribute) {
+          if (onCapsLock) { keyD.innerHTML = k[this.languach][capsLock]; }
+        }
       });
     });
   }
 }
-
-// const toggleButton = (e, toggle) => {
-//   e.stopImmediatePropagation();
-//   if (e.code === 'CapsLock' && toggle == 'add') {
-//     capsLockSelector.classList.toggle('active');
-//     this.capsLock = !this.capsLock;
-//   }
-
-//   keysDOM.forEach(key => {
-//     const attribute = key.getAttribute('name');
-
-//     if (attribute === e.code && e.code !== 'CapsLock') {
-//       e.preventDefault();
-//       key.classList[toggle]('active');
-//     }
-
-//     keys.forEach(k => {
-//       const onCapsLock = k[this.languach].capsLock;
-//       const onShift = k[this.languach].shift;
-
-//       switch (e.key) {
-//         case 'CapsLock':
-//           // if (this.capsLock) {
-//           //   if (onCapsLock && k.keyCode === attribute) {
-//           //     e.preventDefault();
-//           //     key.innerHTML = onCapsLock;
-//           //   }
-//           // } else if (!this.capsLock) {
-//           //   if (onCapsLock && k.keyCode === attribute) {
-//           //     e.preventDefault();
-//           //     key.innerHTML = k[this.languach].normal;
-//           //   }
-//           // }
-//           break;
-
-//         case 'Shift':
-//           if (toggle == 'add' && onShift && k.keyCode === attribute) {
-//             e.preventDefault();
-//             key.innerHTML = onShift;
-//           } else if (
-//             toggle == 'remove' &&
-//             onShift &&
-//             k.keyCode === attribute
-//           ) {
-//             e.preventDefault();
-//             key.innerHTML = k[this.languach].normal;
-//           }
-
-//           // if (
-//           //   toggle == 'add' &&
-//           //   e.code === 'ShiftLeft'
-//           //   // &&
-//           //   // e.code === 'ControlLeft'
-//           // ) {
-//           //   // console.log(this.languach);
-//           //   this.languach = this.languach === 'ua' ? 'en' : 'ua';
-//           //   localStorage.setItem('lang', this.languach);
-
-//           //   key.innerHTML = k[this.languach].normal;
-//           // }
-//           break;
-//       }
-//     });
-//   });
-// };
