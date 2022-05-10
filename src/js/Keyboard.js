@@ -43,12 +43,12 @@ export default class Keyboard {
       if (universalButton) {
         keyElement.classList.add('keys', keyCode);
         keyElement.innerHTML = en.normal;
-        keyElement.setAttribute('name', keyCode);
+        keyElement.setAttribute('key', keyCode);
         keyElement.setAttribute('id', keyCode);
       } else {
         keyElement.classList.add('keys');
         keyElement.innerHTML = countLanguach;
-        keyElement.setAttribute('name', keyCode);
+        keyElement.setAttribute('key', keyCode);
         keyElement.setAttribute('id', keyCode);
       }
 
@@ -70,18 +70,29 @@ export default class Keyboard {
       }
       if (!activeKey) {
         e.preventDefault();
-      } else if (activeKey && e.code !== 'CapsLock') {
-        activeKey.classList.remove('active');
+      }
+
+      if (activeKey && e.code !== 'CapsLock') {
+        setTimeout(() => {
+          activeKey.classList.remove('active');
+        }, 150);
       }
     });
 
     document.addEventListener('keydown', (e) => {
       this.textarea.focus();
+      const metaButton = [];
+      keys.forEach((k) => {
+        if (k.universalButton) {
+          metaButton.push(k.keyCode);
+        }
+      });
       const activeKey = document.getElementById(e.code);
-
       if (!activeKey) {
         e.preventDefault();
-      } else if (activeKey && e.code !== 'CapsLock') {
+        return;
+      }
+      if (activeKey && e.code !== 'CapsLock') {
         activeKey.classList.add('active');
       }
       if ((e.ctrlKey || e.metaKey) && e.altKey && !e.repeat) {
@@ -96,26 +107,16 @@ export default class Keyboard {
         this.pressShiftKey(e, 'add');
       } else if (e.code === 'Tab') {
         e.preventDefault();
-        this.tabAndEnterTap('\t');
+        this.textInput('\t');
       } else if (e.code === 'Space') {
         e.preventDefault();
-        this.tabAndEnterTap(' ');
+        this.textInput(' ');
       } else if (e.code === 'Backspace') {
         e.preventDefault();
-        if (this.textarea.selectionStart !== this.textarea.selectionEnd) {
-          this.insertText('');
-        } else {
-          const cursor = Math.max(0, this.textarea.selectionStart - 1);
-
-          this.textarea.value = this.textarea.value.slice(0, cursor)
-            + this.textarea.value.slice(this.textarea.selectionEnd);
-
-          this.textarea.selectionStart = cursor;
-          this.textarea.selectionEnd = this.textarea.selectionStart;
-        }
+        this.backspaceButton();
       } else if (e.code === 'Enter') {
         e.preventDefault();
-        this.tabAndEnterTap('\n');
+        this.textInput('\n');
       } else if (e.code === 'Delete') {
         e.preventDefault();
         this.pressDelete();
@@ -138,6 +139,9 @@ export default class Keyboard {
           this.textarea.selectionEnd + 1,
         );
         this.textarea.selectionEnd = this.textarea.selectionStart;
+      } else if (!metaButton.includes(e.code)) {
+        e.preventDefault();
+        this.textInput(activeKey.textContent);
       }
     });
 
@@ -163,9 +167,9 @@ export default class Keyboard {
   }
 
   pressShiftKey(e, toggle) {
-    const keysDOM = document.querySelectorAll('[name]');
+    const keysDOM = document.querySelectorAll('[key]');
     keysDOM.forEach((keyD) => {
-      const attribute = keyD.getAttribute('name');
+      const attribute = keyD.getAttribute('key');
 
       keys.forEach((k) => {
         const onShift = k[this.languach].shift;
@@ -194,10 +198,24 @@ export default class Keyboard {
     });
   }
 
+  backspaceButton() {
+    if (this.textarea.selectionStart !== this.textarea.selectionEnd) {
+      this.insertText('');
+    } else {
+      const cursor = Math.max(0, this.textarea.selectionStart - 1);
+
+      this.textarea.value = this.textarea.value.slice(0, cursor)
+      + this.textarea.value.slice(this.textarea.selectionEnd);
+
+      this.textarea.selectionStart = cursor;
+      this.textarea.selectionEnd = this.textarea.selectionStart;
+    }
+  }
+
   toggleCapsLog(e) {
-    const keysDOM = document.querySelectorAll('[name]');
+    const keysDOM = document.querySelectorAll('[key]');
     keysDOM.forEach((keyD) => {
-      const attribute = keyD.getAttribute('name');
+      const attribute = keyD.getAttribute('key');
 
       keys.forEach((k) => {
         const onCapsLock = k[this.languach].capsLock;
@@ -218,7 +236,7 @@ export default class Keyboard {
   }
 
   changeLanguach() {
-    const keysDOM = document.querySelectorAll('[name]');
+    const keysDOM = document.querySelectorAll('[key]');
     const capsLock = this.capsLock ? 'shift' : 'normal';
 
     this.languach = this.languach === 'ua' ? 'en' : 'ua';
@@ -226,7 +244,7 @@ export default class Keyboard {
     localStorage.setItem('lang', this.languach);
 
     keysDOM.forEach((keyD) => {
-      const attribute = keyD.getAttribute('name');
+      const attribute = keyD.getAttribute('key');
 
       keys.forEach((k) => {
         const onCapsLock = k[this.languach].capsLock;
@@ -237,15 +255,15 @@ export default class Keyboard {
     });
   }
 
-  tabAndEnterTap(chars) {
+  textInput(text) {
     this.textarea = document.querySelector('.textarea');
     const cursorAt = this.textarea.selectionStart;
 
     this.textarea.value = this.textarea.value.slice(0, cursorAt)
-      + chars
-      + this.textarea.value.slice(this.textarea.selectionEnd);
+          + text
+          + this.textarea.value.slice(this.textarea.selectionEnd);
 
-    this.textarea.selectionStart = cursorAt + chars.length;
+    this.textarea.selectionStart = cursorAt + text.length;
     this.textarea.selectionEnd = this.textarea.selectionStart;
   }
 
