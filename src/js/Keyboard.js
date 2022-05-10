@@ -15,7 +15,7 @@ export default class Keyboard {
   init() {
     this.main = document.createElement('div');
     this.main.classList.add('container');
-    this.main.innerHTML = '<h1 class="title">Virtual keyboard</h1><textarea class="textarea" id="textarea" rows="5" cols="50"></textarea>';
+    this.main.innerHTML = '<h1 class="title">RSS Virtual Keyboard</h1><textarea class="textarea" id="textarea" rows="5" cols="50"></textarea>';
     this.keysContainer = document.createElement('div');
     this.keysContainer.classList.add('keyboard');
     this.text = document.createElement('div');
@@ -58,9 +58,7 @@ export default class Keyboard {
   changeButton() {
     const keysDOM = document.querySelectorAll('[name]');
     const capsLockSelector = document.querySelector('.CapsLock');
-
-    // const capsLock = this.capsLock ? 'shift' : 'normal';
-    // const countLanguach = languach === 'en' ? en[capsLock] : ua[capsLock];
+    this.textarea = document.querySelector('.textarea');
 
     document.addEventListener('keydown', (e) => this.toggleButton(e, 'add'));
     document.addEventListener('keyup', (e) => this.toggleButton(e, 'remove'));
@@ -72,6 +70,7 @@ export default class Keyboard {
     });
 
     this.toggleButton = (e, toggle) => {
+      this.textarea.focus();
       if (e.code === 'CapsLock' && toggle === 'add') {
         capsLockSelector.classList.toggle('active');
         this.capsLock = !this.capsLock;
@@ -119,15 +118,77 @@ export default class Keyboard {
                   } else { keyD.innerHTML = onShift; }
                 }
               }
-
               break;
 
+            case 'ArrowUp':
+              if (toggle === 'remove') {
+                this.textarea.selectionStart = 0;
+                this.textarea.selectionEnd = this.textarea.selectionStart;
+              }
+              break;
+            case 'ArrowDown':
+              if (toggle === 'remove') {
+                this.textarea.selectionEnd = this.textarea.textLength;
+                this.textarea.selectionStart = this.textarea.selectionEnd;
+              }
+              break;
+            case 'ArrowLeft':
+              if (toggle === 'remove') {
+                this.textarea.selectionStart = Math.max(0, this.textarea.selectionStart - 1);
+                this.textarea.selectionEnd = this.textarea.selectionStart;
+              }
+              break;
+            case 'ArrowRight':
+              if (toggle === 'remove') {
+                this.textarea.selectionStart = Math.min(
+                  this.textarea.textLength,
+                  this.textarea.selectionEnd + 1,
+                );
+                this.textarea.selectionEnd = this.textarea.selectionStart;
+              }
+              break;
+            case 'Tab':
+              if (toggle === 'remove') {
+                this.tabAndEnterTap('\t');
+              }
+              break;
+            case 'Enter':
+              if (toggle === 'remove') {
+                this.tabAndEnterTap('\n');
+              }
+              break;
+            case 'Delete':
+              if (toggle === 'remove') {
+                this.pressDelete();
+              }
+              break;
             default:
               break;
           }
         });
       });
     };
+    this.keysContainer.addEventListener('click', (event) => {
+      const clikcEvent = event.target.getAttribute('name');
+
+      this.textarea.focus();
+      const keyDown = new KeyboardEvent('keydown', {
+        bubbles: true,
+        cancelable: true,
+        code: clikcEvent,
+        view: window,
+      });
+      document.dispatchEvent(keyDown);
+
+      this.textarea.focus();
+      const keyUp = new KeyboardEvent('keyup', {
+        bubbles: true,
+        cancelable: true,
+        code: clikcEvent,
+        view: window,
+      });
+      document.dispatchEvent(keyUp);
+    });
   }
 
   changeLanguach() {
@@ -148,5 +209,47 @@ export default class Keyboard {
         }
       });
     });
+  }
+
+  tabAndEnterTap(chars) {
+    this.textarea = document.querySelector('.textarea');
+    const cursorAt = this.textarea.selectionStart;
+
+    this.textarea.value = this.textarea.value.slice(0, cursorAt)
+      + chars
+      + this.textarea.value.slice(this.textarea.selectionEnd);
+
+    this.textarea.selectionStart = cursorAt + chars.length;
+    this.textarea.selectionEnd = this.textarea.selectionStart;
+  }
+
+  pressBackspace() {
+    this.textarea = document.querySelector('.textarea');
+    if (this.textarea.selectionStart !== this.textarea.selectionEnd) {
+      this.insertText('');
+    } else {
+      const cursorAt = Math.max(0, this.textarea.selectionStart - 1);
+
+      this.textarea.value = this.textarea.value.slice(0, cursorAt)
+        + this.textarea.value.slice(this.textarea.selectionEnd);
+
+      this.textarea.selectionStart = cursorAt;
+      this.textarea.selectionEnd = this.textarea.selectionStart;
+    }
+  }
+
+  pressDelete() {
+    this.textarea = document.querySelector('.textarea');
+    if (this.textarea.selectionStart !== this.textarea.selectionEnd) {
+      this.insertText('');
+    } else {
+      const cursorAt = this.textarea.selectionStart;
+
+      this.textarea.value = this.textarea.value.slice(0, cursorAt)
+        + this.textarea.value.slice(cursorAt + 1);
+
+      this.textarea.selectionStart = cursorAt;
+      this.textarea.selectionEnd = this.textarea.selectionStart;
+    }
   }
 }

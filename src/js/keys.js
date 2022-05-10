@@ -1,8 +1,8 @@
 export default [
   {
     keyCode: 'Backquote',
-    en: { normal: '`', shift: '~' },
-    ua: { normal: '\'', shift: '₴' },
+    en: { normal: '`', shift: '~', capsLock: '`' },
+    ua: { normal: '\'', shift: '₴', capsLock: '\'' },
     universalButton: false,
     number: true,
   },
@@ -176,14 +176,14 @@ export default [
 
   {
     keyCode: 'BracketLeft',
-    en: { normal: '[', shift: '{' },
+    en: { normal: '[', shift: '{', capsLock: '{' },
     ua: { normal: 'х', shift: 'Х', capsLock: 'Х' },
     universalButton: false,
   },
 
   {
     keyCode: 'BracketRight',
-    en: { normal: ']', shift: '}' },
+    en: { normal: ']', shift: '}', capsLock: '}' },
     ua: { normal: 'ї', shift: 'Ї', capsLock: 'Ї' },
     universalButton: false,
   },
@@ -272,14 +272,14 @@ export default [
 
   {
     keyCode: 'Semicolon',
-    en: { normal: ';', shift: ':' },
+    en: { normal: ';', shift: ':', capsLock: ':' },
     ua: { normal: 'ж', shift: 'Ж', capsLock: 'Ж' },
     universalButton: false,
   },
 
   {
     keyCode: 'Quote',
-    en: { normal: '\'', shift: '"' },
+    en: { normal: '\'', shift: '"', capsLock: '"' },
     ua: { normal: 'є', shift: 'Є', capsLock: 'Є' },
     universalButton: false,
   },
@@ -347,14 +347,14 @@ export default [
 
   {
     keyCode: 'Comma',
-    en: { normal: ',', shift: '<' },
+    en: { normal: ',', shift: '<', capsLock: '<' },
     ua: { normal: 'б', shift: 'Б', capsLock: 'Б' },
     universalButton: false,
   },
 
   {
     keyCode: 'Period',
-    en: { normal: '.', shift: '>' },
+    en: { normal: '.', shift: '>', capsLock: '>' },
     ua: { normal: 'ю', shift: 'Ю', capsLock: 'Ю' },
     universalButton: false,
   },
